@@ -1,5 +1,5 @@
-import api from "./api";
-import TokenService from "./token.service";
+import api from './api';
+import TokenService from './token.service';
 
 const register = (username, email, password) => {
   return api.post("/auth/signup", {

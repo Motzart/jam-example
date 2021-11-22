@@ -1,17 +1,17 @@
-import express from 'express';
-import next from 'next';
-import helmet from 'helmet';
-import bodyParser from 'bodyParser';
-import cors from 'cors';
+const express  = require('express');
+const next  = require('next');
+const helmet  = require('helmet');
+const path = require('path');
 
-import routes from '../routes';
+const api =  require('./api/router');
+const routes = require('../routes');
 
 const app = next({
   dev: process.env.NODE_ENV !== 'production',
   dir: path.join(__dirname, '../'),
 });
 
-const handle = routes.getRequestHandler()
+const handle = routes.getRequestHandler(app)
 
 app.prepare().then(() => {
   const server = express();
@@ -27,7 +27,7 @@ app.prepare().then(() => {
     res.send('Server is running');
   });
 
-  // Handle API requetst
+  // Handle API request
   
   server.use('/api', api);
 

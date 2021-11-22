@@ -1,5 +1,9 @@
 import api from "./api";
 
+const getUser = () => {
+  return api.get("/users/1");
+};
+
 const getPublicContent = () => {
   return api.get("/test/all");
 };
@@ -17,6 +21,7 @@ const getAdminBoard = () => {
 };
 
 const UserService = {
+  getUser,
   getPublicContent,
   getUserBoard,
   getModeratorBoard,
